@@ -1,15 +1,16 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
+import uvicorn
+
+from apis.endpoints import router as endpoints_router
+from frontend.routes import router as frontend_router
 
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+app.include_router(endpoints_router)
+app.include_router(frontend_router)
 
 
-# Jinja2 Templates for serving HTML
-templates = Jinja2Templates(directory="app/templates")
-
-@app.get("/")
-async def serve_spa(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
-
-# ... include your API routers
+if __name__ == "__main__":
+     uvicorn.run(app, host="0.0.0.0", port=8001)

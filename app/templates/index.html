@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel=icon href='/static/images/icon.png' sizes="16x16" type="image/png">
+    <title>Registration - Face and Voice Capture</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+
+    <link href="/static/css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container my-5">
+        <div id="registration-section" class="registration-section">
+            <div class="card" id="face-capture-card">
+                <div class="card-body">
+                    <h3 class="card-title"><i class="fas fa-camera-retro"></i> Register Your Face</h3>
+                    <p>Please align your face within the frame and press "Register" when ready.</p>
+                    <form id="registration-form" action="#">
+                        <div class="form-group has-icon">
+                            <i class="fas fa-user input-icon"></i>
+                            <label for="name">Name:</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required autocomplete="off">
+                        </div>
+                        <div class="form-group has-icon">
+                            <i class="fas fa-envelope input-icon"></i>
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required autocomplete="off">
+                        </div>
+                        <div class="form-group has-icon">
+                            <i class="fas fa-key input-icon"></i>
+                            <label for="pin">PIN:</label>
+                            <input type="text" inputmode="numeric" pattern="[0-9]{4}"
+                             class="form-control" id="pin" name="pin" placeholder="Enter a 4-digit PIN" 
+                             required minlength="4" maxlength="4" 
+                             onkeypress="return event.charCode >= 48 && event.charCode <= 57" 
+                             oninput="this.value=this.value.slice(0,this.maxLength)"
+                             autocomplete="off">
+                        </div>
+                        <div class="camera-feed">
+                            <video id="video" width="320" height="240" autoplay></video>
+                            <div class="overlay-circle"></div>
+                        </div>
+                        <button type="submit" class="btn btn-action" id="register-face-btn" disabled>Register Face</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="card" id="voice-capture-card" style="display: none;">
+                <div class="card-body">
+                    <h3 class="card-title"><i class="fas fa-microphone-alt"></i> Register Your Voice</h3>
+                    <p>Please click "Record" and speak the passphrase clearly. Your text will appear below:</p>
+                    <div class="container">
+                        <div id="transcription" class="echo-effect" style="text-align: center;"></div>
+                        <div class="soundwave">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                        </div>
+                        <button class="btn btn-action" id="voice-toggle-btn">Start/Stop Transcription</button>
+                        <button class="btn btn-action" id="voice-toggle-btn">Submit the Voice</button>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/video_script.js"></script>
+    <script src="/static/js/audio_script.js"></script>
+</body>
+</html>
