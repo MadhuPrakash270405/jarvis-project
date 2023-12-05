@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+Login - Jarvis the Personal Assistant
+{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="text-center">
+        <i class="fas fa-assistive-listening-systems heading-icon"></i>
+        Jarvis the Personal Assistant
+    </h1> 
+    <!-- Include the registration section -->
+    {% include "parts/face_verification.html" %}
+</div>
+<script src="/static/js/face_auth.js"></script>
+{% endblock %}

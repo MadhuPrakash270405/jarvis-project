@@ -2,7 +2,7 @@ window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogn
 
 const recognition = new SpeechRecognition();
 recognition.interimResults = true;
-recognition.lang = 'en-US';
+recognition.lang = 'en-IN';
 
 const transcription = document.getElementById('transcription');
 const bars = document.querySelectorAll('.bar'); // Select all bars

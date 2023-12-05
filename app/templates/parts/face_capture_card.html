@@ -1,0 +1,44 @@
+<div class="card window-card" id="face-capture-card">
+    <div class="card-header window-header">
+        <!-- Window control icons -->
+        <div class="window-controls">
+            <div class="window-control close"></div>
+            <div class="window-control minimize"></div>
+            <div class="window-control maximize"></div>
+        </div>
+        <br>
+        <h3 class="card-title window-title"><i class="fas fa-camera-retro"></i> Register Your Face</h3>
+    </div>
+
+    <div class="card-body">
+        
+        <p>Please align your face within the frame and press "Register" when ready.</p>
+        <form id="registration-form" action="#">
+            <div class="form-group has-icon">
+                <i class="fas fa-user input-icon"></i>
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required autocomplete="off">
+            </div>
+            <div class="form-group has-icon">
+                <i class="fas fa-envelope input-icon"></i>
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required autocomplete="off">
+            </div>
+            <div class="form-group has-icon">
+                <i class="fas fa-key input-icon"></i>
+                <label for="pin">PIN:</label>
+                <input type="text" inputmode="numeric" pattern="[0-9]{4}"
+                 class="form-control" id="pin" name="pin" placeholder="Enter a 4-digit PIN" 
+                 required minlength="4" maxlength="4" 
+                 onkeypress="return event.charCode >= 48 && event.charCode <= 57" 
+                 oninput="this.value=this.value.slice(0,this.maxLength)"
+                 autocomplete="off">
+            </div>
+            <div class="camera-feed">
+                <video id="video" width="320" height="240" autoplay></video>
+                <div class="overlay-circle"></div>
+            </div>
+            <button type="submit" class="btn btn-action" id="register-face-btn" disabled>Register Face</button>
+        </form>
+    </div>
+</div>

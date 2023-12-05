@@ -1,0 +1,43 @@
+
+<div id="popup-card" class="popup-card" style="display: none;">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <div id="popup-icon" class="popup-icon"><!-- Icon will go here --></div>
+        <p id="popup-message"></p>
+    </div>
+</div>
+
+<script>
+function showPopup(message, status='info') {
+    const popupIcon = document.getElementById('popup-icon');
+    const popupMessage = document.getElementById('popup-message');
+    const popupCard = document.getElementById('popup-card');
+
+    // Set icon based on status
+    popupIcon.innerHTML = getIconHtml(status);
+    popupMessage.textContent = message;
+    popupCard.style.display = 'block';
+    setTimeout(() => popupCard.classList.add('show'), 10);
+    setTimeout(() => closePopup(), 5000);
+}
+
+function getIconHtml(status) {
+    switch (status) {
+        case 'success':
+            return '<i class="fas fa-check-circle" style="color: green;"></i>';
+        case 'error':
+            return '<i class="fas fa-times-circle" style="color: red;"></i>';
+        case 'info':
+        default:
+            return '<i class="fas fa-info-circle" style="color: blue;"></i>';
+    }
+}
+
+function closePopup() {
+    const popupCard = document.getElementById('popup-card');
+    popupCard.classList.remove('show');
+    setTimeout(() => popupCard.style.display = 'none', 300);
+}
+
+
+</script>

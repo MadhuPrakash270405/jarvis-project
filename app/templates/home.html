@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home - Jarvis the Personal Assistant
+{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="text-center">
+        <i class="fas fa-assistive-listening-systems heading-icon"></i>
+        Jarvis the Personal Assistant
+    </h1> 
+    <!-- Include the registration section -->
+    {% include "parts/voice_capture_card.html" %}
+</div>
+<script src="/static/js/audio_script.js"></script>
+{% endblock %}

@@ -59,25 +59,48 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
     function sendFaceData(faceDataURL) {
+        // Get the values from your input fields
+        const name = nameInput.value;
+        const pin = pinInput.value;
+        const email = emailInput.value;
+    
         fetch('/register/face', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ image: faceDataURL })
+            body: JSON.stringify({
+                image: faceDataURL,
+                name: name,
+                pin: pin,
+                email: email
+            })
         })
-        .then(response => response.json())
+        .then(response => {
+            // Check if the response was successful
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
         .then(data => {
             console.log(data);
-            alert('Face captured successfully!');
-            faceCaptureSection.style.display = 'none';
-            voiceCaptureSection.style.display = 'block';
+            
+            setTimeout(() => {
+                if (videoStream) {
+                    videoStream.getTracks().forEach(track => track.stop());
+                    video.srcObject = null;
+                }
+            }, 1000);
+            showPopup('Face Registered successfully! Redirecting to Login Page', 'success');
+            setTimeout(() =>{
+                window.location.href = '/login'; // Replace '/login' with the actual path to your login page
+            }, 2000);
             // Stop the video stream as it's no longer needed
-            if (videoStream) {
-                videoStream.getTracks().forEach(track => track.stop());
-                video.srcObject = null;
-            }
+
         })
         .catch((error) => {
             console.error('Error:', error);
+            showPopup('Failed to capture face!', 'error');
         });
     }
+    
 });

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href='/static/images/icon.png' sizes="16x16" type="image/png">
+    <title>{% block title %}Default Title{% endblock %}</title>
+    <link href="https://unpkg.com/feather-icons/dist/feather.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <link href="/static/css/styles.css" rel="stylesheet">
+</head>
+<body>
+    {% include "parts/popup_card.html" %}
+    {% block content %}
+    <!-- Default content goes here if any -->
+    {% endblock %}
+
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>feather.replace();</script>
+
+</body>
+</html>

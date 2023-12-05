@@ -11,6 +11,15 @@ templates = Jinja2Templates(directory="templates")
 
 
 
-@router.get("/")
+@router.get("/register")
 async def serve_spa(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse("registration.html", {"request": request})
+
+@router.get("/login")
+async def serve_spa(request: Request):
+    return templates.TemplateResponse("login.html", {"request": request})
+
+
+@router.get("/home")
+async def serve_spa(request: Request):
+    return templates.TemplateResponse("home.html", {"request": request})
