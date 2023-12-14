@@ -47,5 +47,24 @@
     <div class="camera-feed">
         <video id="video" autoplay></video>
     </div>
-    <button class="btn-verify">Verify Face</button>
+
+    <div class="form-group has-icon">
+        <i class="fas fa-envelope input-icon"></i>
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="login_email" name="email" placeholder="Enter your email" required autocomplete="off">
+    </div>
+
+    <div class="form-group has-icon">
+        <i class="fas fa-key input-icon"></i>
+        <label for="pin">PIN:</label>
+        <input type="text" inputmode="numeric" pattern="[0-9]{4}"
+         class="form-control" id="login_pin" name="pin" placeholder="Enter a 4-digit PIN" 
+         required minlength="4" maxlength="4" 
+         onkeypress="return event.charCode >= 48 && event.charCode <= 57" 
+         oninput="this.value=this.value.slice(0,this.maxLength)"
+         autocomplete="off">
+    </div>
+
+    <button class="btn-verify" disabled>Verify Face</button>
+
 </div>

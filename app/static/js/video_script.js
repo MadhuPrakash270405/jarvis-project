@@ -5,8 +5,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     canvas.height = 240;
 
     const registerFaceBtn = document.getElementById('register-face-btn');
-    const faceCaptureSection = document.getElementById('face-capture-card');
-    const voiceCaptureSection = document.getElementById('voice-capture-card');
     const registrationForm = document.getElementById('registration-form');
     const nameInput = document.getElementById('name');
     const emailInput = document.getElementById('email');
@@ -83,14 +81,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
         })
         .then(data => {
             console.log(data);
-            
+            access_token=data.access_token;
             setTimeout(() => {
                 if (videoStream) {
                     videoStream.getTracks().forEach(track => track.stop());
                     video.srcObject = null;
                 }
             }, 1000);
+            // message=data.message;
             showPopup('Face Registered successfully! Redirecting to Login Page', 'success');
+            localStorage.setItem('accessToken', access_token);
             setTimeout(() =>{
                 window.location.href = '/login'; // Replace '/login' with the actual path to your login page
             }, 2000);
